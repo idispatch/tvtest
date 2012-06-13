@@ -805,17 +805,17 @@ TMenuBar *TMyApp::initMenuBar(TRect r) {
             + *new TMenuItem("Ascii ~T~able", cmAsciiCmd, kbNoKey, hcNoContext)
             + *new TMenuItem("~C~alculator", cmCalcCmd, kbNoKey, hcNoContext);
     TSubMenu& sub2 = *new TSubMenu("~F~ile", kbAltF)
-                    + *new TMenuItem("~O~pen", cmMyFileOpen, kbF3, hcNoContext, "F3")
-                    + *new TMenuItem("~N~ew", cmMyNewWin, kbF4, hcNoContext, "F4")
-                    + *new TMenuItem("~A~bout", cmAboutCmd, kbF1, hcNoContext, "F1") + newLine()
-                    + *new TMenuItem("E~x~it", cmQuit, cmQuit, hcNoContext, "Alt-X");
+            + *new TMenuItem("~O~pen", cmMyFileOpen, kbF3, hcNoContext, "F3")
+            + *new TMenuItem("~N~ew", cmMyNewWin, kbF4, hcNoContext, "F4")
+            + *new TMenuItem("~A~bout", cmAboutCmd, kbF1, hcNoContext, "F1") + newLine()
+            + *new TMenuItem("E~x~it", cmQuit, cmQuit, hcNoContext, "Alt-X");
     TSubMenu& sub3 = *new TSubMenu("~W~indow", kbAltW)
-                    + *new TMenuItem("~R~esize/move", cmResize, kbCtrlF5, hcNoContext, "Ctrl-F5")
-                    + *new TMenuItem("~C~lose", cmClose, kbAltF3, hcNoContext, "Alt-F3")
-                    + *new TMenuItem("~T~ile", cmTile, kbNoKey, hcNoContext)
-                    + *new TMenuItem("C~a~scade", cmCascade, kbNoKey, hcNoContext)
-                    + *new TMenuItem("~N~ext", cmNext, kbF6, hcNoContext, "F6")
-                    + *new TMenuItem("~Z~oom", cmZoom, kbF5, hcNoContext, "F5");
+            + *new TMenuItem("~R~esize/move", cmResize, kbCtrlF5, hcNoContext, "Ctrl-F5")
+            + *new TMenuItem("~C~lose", cmClose, kbAltF3, hcNoContext, "Alt-F3")
+            + *new TMenuItem("~T~ile", cmTile, kbNoKey, hcNoContext)
+            + *new TMenuItem("C~a~scade", cmCascade, kbNoKey, hcNoContext)
+            + *new TMenuItem("~N~ext", cmNext, kbF6, hcNoContext, "F6")
+            + *new TMenuItem("~Z~oom", cmZoom, kbF5, hcNoContext, "F5");
 
     return new TMenuBar(r, sub1 + sub2 + sub3);
 }

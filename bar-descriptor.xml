@@ -60,6 +60,10 @@
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="Device-Release/tvtest" entry="true" type="Qnx/Elf">tvtest</asset>
     </configuration>
+    <configuration id="com.qnx.qcc.configuration.exe.debug.1558618254" name="Simulator-Debug">
+       <platformArchitecture>x86</platformArchitecture>
+       <asset path="Simulator-Debug/tvtest" entry="true" type="Qnx/Elf">tvtest</asset>
+    </configuration>
     
     <!--  The icon for the application, which should be 86x86. -->
     <icon>

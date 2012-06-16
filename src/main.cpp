@@ -866,6 +866,7 @@ TDemoWindow::TDemoWindow(const TRect& bounds, const char *aTitle, short aNumber)
         TWindowInit(&TDemoWindow::initFrame), TWindow(bounds, aTitle, aNumber) {
     TRect r = getClipRect();
     r.grow(-1, -1);
+    options |= ofTileable;
     insert(new TInterior(r));
 }
 

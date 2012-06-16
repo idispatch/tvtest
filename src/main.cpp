@@ -684,7 +684,7 @@ ushort TMyApp::executeDialog(TDialog* pD, void* data) {
         c = TProgram::deskTop->execView(pD);
         if ((c != cmCancel) && (data))
             pD->getData(data);
-        CLY_destroy(pD);
+        destroy(pD);
     }
 
     return c;

@@ -24,6 +24,8 @@
 								<option id="com.qnx.qcc.option.compiler.optlevel.1316050141" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
 								<option id="com.qnx.qcc.option.compile.debug.2132498658" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.compiler.includePath.56830491" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision/include}&quot;"/>
@@ -44,6 +46,8 @@
 							<tool id="com.qnx.qcc.tool.assembler.1375296646" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
 								<option id="com.qnx.qcc.option.assembler.debug.1802968683" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.assembler.includePath.1491614247" name="Include Directories (-I)" superClass="com.qnx.qcc.option.assembler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision}&quot;"/>
 								</option>
 								<inputType id="com.qnx.qcc.inputType.assembler.1062485809" superClass="com.qnx.qcc.inputType.assembler"/>
@@ -52,7 +56,6 @@
 								<option id="com.qnx.qcc.option.linker.debug.687259456" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.langcpp.1625711600" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.libraryPaths.708330494" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console/Device-Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL12/Device-Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TouchControlOverlay/Device-Debug}&quot;"/>
@@ -64,6 +67,8 @@
 								<option id="com.qnx.qcc.option.linker.security.1124131006" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.libraries.127062019" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
 									<listOptionValue builtIn="false" value="tvision"/>
+									<listOptionValue builtIn="false" value="console"/>
+									<listOptionValue builtIn="false" value="SDL_console"/>
 									<listOptionValue builtIn="false" value="asound"/>
 									<listOptionValue builtIn="false" value="screen"/>
 									<listOptionValue builtIn="false" value="bps"/>
@@ -71,8 +76,6 @@
 									<listOptionValue builtIn="false" value="xml2"/>
 									<listOptionValue builtIn="false" value="GLESv2"/>
 									<listOptionValue builtIn="false" value="EGL"/>
-									<listOptionValue builtIn="false" value="SDL_console"/>
-									<listOptionValue builtIn="false" value="console"/>
 									<listOptionValue builtIn="false" value="SDL12"/>
 									<listOptionValue builtIn="false" value="TouchControlOverlay"/>
 								</option>
@@ -91,11 +94,25 @@
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-				<externalSettings containerId="tvision;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+				<externalSettings containerId="tvision;com.qnx.qcc.configuration.staticLib.debug.1679330515" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/tvision"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/tvision/Debug"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="tvision"/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="SDL_console;com.qnx.qcc.configuration.sharedLib.debug.35042474" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/SDL_console"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/SDL_console/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="SDL_console"/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="console;com.qnx.qcc.configuration.exe.debug.819259559" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/console"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/console/Device-Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="console"/>
 					</externalSetting>
 				</externalSettings>
 			</storageModule>
@@ -120,6 +137,9 @@
 							<tool id="com.qnx.qcc.tool.compiler.1465861385" name="QCC Compiler" superClass="com.qnx.qcc.tool.compiler">
 								<option id="com.qnx.qcc.option.compiler.optlevel.1693397500" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.2" valueType="enumerated"/>
 								<option id="com.qnx.qcc.option.compiler.includePath.2082930552" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console/src}&quot;"/>
 									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/usr/include"/>
@@ -136,10 +156,15 @@
 									<listOptionValue builtIn="false" value="-frecord-gcc-switches"/>
 								</option>
 								<option id="com.qnx.qcc.option.compiler.warningLevel.1884249976" name="Warning Level (-w)" superClass="com.qnx.qcc.option.compiler.warningLevel" value="com.qnx.qcc.option.warningLevel.5" valueType="enumerated"/>
-								<option id="com.qnx.qcc.option.compiler.cppoptions.113104281" name="Preprocessor Options (-Wp,)" superClass="com.qnx.qcc.option.compiler.cppoptions" valueType="stringList"/>
+								<option id="com.qnx.qcc.option.compiler.cppoptions.113104281" name="Preprocessor Options (-Wp,)" superClass="com.qnx.qcc.option.compiler.cppoptions"/>
 								<inputType id="com.qnx.qcc.inputType.compiler.1562240003" superClass="com.qnx.qcc.inputType.compiler"/>
 							</tool>
 							<tool id="com.qnx.qcc.tool.assembler.349136452" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
+								<option id="com.qnx.qcc.option.assembler.includePath.59771813" name="Include Directories (-I)" superClass="com.qnx.qcc.option.assembler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision}&quot;"/>
+								</option>
 								<inputType id="com.qnx.qcc.inputType.assembler.1942352646" superClass="com.qnx.qcc.inputType.assembler"/>
 							</tool>
 							<tool id="com.qnx.qcc.tool.linker.471793099" name="QCC Linker" superClass="com.qnx.qcc.tool.linker">
@@ -156,6 +181,9 @@
 								<option id="com.qnx.qcc.option.linker.pie.549117071" name="Position Independent Executable (-pie)" superClass="com.qnx.qcc.option.linker.pie" value="false" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.security.1187248568" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="false" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.libraries.1856854964" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
+									<listOptionValue builtIn="false" value="tvision"/>
+									<listOptionValue builtIn="false" value="console"/>
+									<listOptionValue builtIn="false" value="SDL_console"/>
 									<listOptionValue builtIn="false" value="asound"/>
 									<listOptionValue builtIn="false" value="screen"/>
 									<listOptionValue builtIn="false" value="bps"/>
@@ -163,9 +191,6 @@
 									<listOptionValue builtIn="false" value="xml2"/>
 									<listOptionValue builtIn="false" value="GLESv2"/>
 									<listOptionValue builtIn="false" value="EGL"/>
-									<listOptionValue builtIn="false" value="tvision"/>
-									<listOptionValue builtIn="false" value="SDL_console"/>
-									<listOptionValue builtIn="false" value="console"/>
 									<listOptionValue builtIn="false" value="SDL12"/>
 									<listOptionValue builtIn="false" value="TouchControlOverlay"/>
 								</option>
@@ -183,7 +208,29 @@
 					</sourceEntries>
 				</configuration>
 			</storageModule>
-			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="tvision;com.qnx.qcc.configuration.staticLib.release.495053985" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/tvision"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/tvision/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="tvision"/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="SDL_console;com.qnx.qcc.configuration.sharedLib.release.1566288107" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/SDL_console"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/SDL_console/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="SDL_console"/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="console;com.qnx.qcc.configuration.exe.release.831765045" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/console"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/console/Device-Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="console"/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="com.qnx.qcc.configuration.exe.debug.1558618254">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.qnx.qcc.configuration.exe.debug.1558618254" moduleId="org.eclipse.cdt.core.settings" name="Simulator-Debug">
@@ -206,6 +253,8 @@
 								<option id="com.qnx.qcc.option.compiler.optlevel.1009772075" name="Optimization Level" superClass="com.qnx.qcc.option.compiler.optlevel" value="com.qnx.qcc.option.compiler.optlevel.0" valueType="enumerated"/>
 								<option id="com.qnx.qcc.option.compile.debug.1076635362" name="Debug (-g)" superClass="com.qnx.qcc.option.compile.debug" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.compiler.includePath.305260006" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision/include}&quot;"/>
@@ -226,6 +275,8 @@
 							<tool id="com.qnx.qcc.tool.assembler.198216521" name="QCC Assembler" superClass="com.qnx.qcc.tool.assembler">
 								<option id="com.qnx.qcc.option.assembler.debug.1646118065" name="Debug (-g)" superClass="com.qnx.qcc.option.assembler.debug" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.assembler.includePath.913112192" name="Include Directories (-I)" superClass="com.qnx.qcc.option.assembler.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision}&quot;"/>
 								</option>
 								<inputType id="com.qnx.qcc.inputType.assembler.1949487194" superClass="com.qnx.qcc.inputType.assembler"/>
@@ -234,17 +285,19 @@
 								<option id="com.qnx.qcc.option.linker.debug.318428684" name="Debug (-g)" superClass="com.qnx.qcc.option.linker.debug" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.langcpp.11062387" name="C++ (-lang-c++)" superClass="com.qnx.qcc.option.linker.langcpp" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.libraryPaths.579850851" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/lib"/>
 									<listOptionValue builtIn="false" value="${QNX_TARGET}/../target-override/${CPUVARDIR}/usr/lib"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL12/Simulator-Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/console/Simulator-Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TouchControlOverlay/Simulator-Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SDL_console/Simulator-Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tvision/Simulator-Debug}&quot;"/>
 								</option>
 								<option id="com.qnx.qcc.option.linker.security.101926077" name="Enhanced Security (-Wl,-z,relro -Wl,-z,now)" superClass="com.qnx.qcc.option.linker.security" value="true" valueType="boolean"/>
 								<option id="com.qnx.qcc.option.linker.libraries.2013377619" name="Libraries (-l)" superClass="com.qnx.qcc.option.linker.libraries" valueType="libs">
 									<listOptionValue builtIn="false" value="tvision"/>
+									<listOptionValue builtIn="false" value="console"/>
+									<listOptionValue builtIn="false" value="SDL_console"/>
 									<listOptionValue builtIn="false" value="asound"/>
 									<listOptionValue builtIn="false" value="screen"/>
 									<listOptionValue builtIn="false" value="bps"/>
@@ -252,8 +305,6 @@
 									<listOptionValue builtIn="false" value="xml2"/>
 									<listOptionValue builtIn="false" value="GLESv2"/>
 									<listOptionValue builtIn="false" value="EGL"/>
-									<listOptionValue builtIn="false" value="SDL_console"/>
-									<listOptionValue builtIn="false" value="console"/>
 									<listOptionValue builtIn="false" value="SDL12"/>
 									<listOptionValue builtIn="false" value="TouchControlOverlay"/>
 								</option>
@@ -272,11 +323,25 @@
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-				<externalSettings containerId="tvision;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+				<externalSettings containerId="tvision;com.qnx.qcc.configuration.staticLib.debug.1679330515.675190840" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/tvision"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/tvision/Debug"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/tvision/Simulator-Debug"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="tvision"/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="SDL_console;com.qnx.qcc.configuration.sharedLib.debug.35042474.221631094" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/SDL_console"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/SDL_console/Simulator-Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="SDL_console"/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="console;com.qnx.qcc.configuration.exe.debug.819259559.2085016768" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/console"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/console/Simulator-Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="console"/>
 					</externalSetting>
 				</externalSettings>
 			</storageModule>

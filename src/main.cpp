@@ -26,6 +26,22 @@ const int cmSaveCmd = 110;
 const int cmRestoreCmd = 111;
 const int cmTestInputBox = 112;
 
+const int cmScreenModeBase = 133;
+const int cmCO128x75 = cmScreenModeBase + 0;  // font 8x8
+const int cmCO128x60 = cmScreenModeBase + 1;  // font 8x10
+const int cmCO128x37 = cmScreenModeBase + 2;  // font 8x16
+const int cmCO113x75 = cmScreenModeBase + 3;  // font 9x8
+const int cmCO113x37 = cmScreenModeBase + 4;  // font 9x16
+const int cmCO102x30 = cmScreenModeBase + 5; // font 10x20
+const int cmCO85x37 = cmScreenModeBase + 6;  // font 12x16
+const int cmCO85x26 = cmScreenModeBase + 7;  // font 12x23
+const int cmCO85x25 = cmScreenModeBase + 8;  // font 12x24
+const int cmCO85x22 = cmScreenModeBase + 9;  // font 12x27
+const int cmCO73x20 = cmScreenModeBase + 10;  // font 14x30
+const int cmCO64x18 = cmScreenModeBase + 11;  // font 16x32
+const int cmCO64x16 = cmScreenModeBase + 12;  // font 16x37
+const int cmCO40x22 = cmScreenModeBase + 13;  // font 25x57
+
 const int cmAsciiTableCmdBase = 910;
 const int cmCharFocused = 0;
 
@@ -670,6 +686,7 @@ protected:
 public:
     static ushort executeDialog(TDialog* pD, void* data = 0);
 private:
+    void setVideoMode(unsigned mode);
     static uchar systemMenuIcon[];
 };
 
@@ -695,8 +712,8 @@ void TMyApp::aboutDlgBox() {
 
     aboutBox->insert(new TStaticText(TRect(9, 2, 30, 9), "\003Turbo Vision Demo\n\n" // These strings will be
                     "\003C++ Version\n\n"// concatenated by the compiler.
-                    "\003Copyright (c) 1994\n\n"// The \003 centers the line.
-                    "\003Borland International"));
+                    "\003Copyright (c) 2012\n\n"// The \003 centers the line.
+                    "\003Research in Motion Limited"));
 
     aboutBox->insert(new TButton(TRect(14, 10, 26, 12), " OK", cmOK, bfDefault));
 
@@ -776,7 +793,7 @@ void TInterior::draw() {
     TView::draw();
     TDrawBuffer b;
     b.moveStr(0, hstr, color);
-    writeLine(4, 2, 12, 1, b);
+    writeLine(0, 0, 12, 1, b);
 }
 
 TMyApp::TMyApp() :
@@ -799,7 +816,8 @@ TStatusLine *TMyApp::initStatusLine(TRect r) {
 TMenuBar *TMyApp::initMenuBar(TRect r) {
     r.b.y = r.a.y + 1; // set bottom line 1 line below top line
     TSubMenu& sub1 = *new TSubMenu((char *) systemMenuIcon, 0, hcNoContext)
-            + *new TMenuItem("~A~bout...", cmAboutCmd, kbNoKey, hcNoContext) + newLine()
+            + *new TMenuItem("~A~bout...", cmAboutCmd, kbNoKey, hcNoContext)
+            + newLine()
             + *new TMenuItem("~P~uzzle", cmPuzzleCmd, kbNoKey, hcNoContext)
             + *new TMenuItem("Ca~l~endar", cmCalendarCmd, kbNoKey, hcNoContext)
             + *new TMenuItem("Ascii ~T~able", cmAsciiCmd, kbNoKey, hcNoContext)
@@ -810,12 +828,26 @@ TMenuBar *TMyApp::initMenuBar(TRect r) {
             + *new TMenuItem("~A~bout", cmAboutCmd, kbF1, hcNoContext, "F1") + newLine()
             + *new TMenuItem("E~x~it", cmQuit, cmQuit, hcNoContext, "Alt-X");
     TSubMenu& sub3 = *new TSubMenu("~W~indow", kbAltW)
-            + *new TMenuItem("~R~esize/move", cmResize, kbCtrlF5, hcNoContext, "Ctrl-F5")
             + *new TMenuItem("~C~lose", cmClose, kbAltF3, hcNoContext, "Alt-F3")
             + *new TMenuItem("~T~ile", cmTile, kbNoKey, hcNoContext)
             + *new TMenuItem("C~a~scade", cmCascade, kbNoKey, hcNoContext)
             + *new TMenuItem("~N~ext", cmNext, kbF6, hcNoContext, "F6")
-            + *new TMenuItem("~Z~oom", cmZoom, kbF5, hcNoContext, "F5");
+            + *new TMenuItem("~Z~oom", cmZoom, kbF5, hcNoContext, "F5")
+            + newLine()
+            + *new TMenuItem("128 columns x 75 rows", cmCO128x75, kbNoKey, hcNoContext)
+            + *new TMenuItem("128 columns x 60 rows", cmCO128x60, kbNoKey, hcNoContext)
+            + *new TMenuItem("128 columns x 37 rows", cmCO128x37, kbNoKey, hcNoContext)
+            + *new TMenuItem("113 columns x 75 rows", cmCO113x75, kbNoKey, hcNoContext)
+            + *new TMenuItem("113 columns x 37 rows", cmCO113x37, kbNoKey, hcNoContext)
+            + *new TMenuItem("102 columns x 30 rows", cmCO102x30, kbNoKey, hcNoContext)
+            + *new TMenuItem("85 columns x 37 rows", cmCO85x37, kbNoKey, hcNoContext)
+            + *new TMenuItem("85 columns x 26 rows", cmCO85x26, kbNoKey, hcNoContext)
+            + *new TMenuItem("85 columns x 25 rows", cmCO85x25, kbNoKey, hcNoContext)
+            + *new TMenuItem("85 columns x 22 rows", cmCO85x22, kbNoKey, hcNoContext)
+            + *new TMenuItem("73 columns x 20 rows", cmCO73x20, kbNoKey, hcNoContext)
+            + *new TMenuItem("64 columns x 18 rows", cmCO64x18, kbNoKey, hcNoContext)
+            + *new TMenuItem("64 columns x 16 rows", cmCO64x16, kbNoKey, hcNoContext)
+            + *new TMenuItem("40 columns x 22 rows", cmCO40x22, kbNoKey, hcNoContext);
 
     return new TMenuBar(r, sub1 + sub2 + sub3);
 }
@@ -848,6 +880,48 @@ void TMyApp::handleEvent(TEvent& event) {
         case cmCascade:
             cascade();
             break;
+        case cmCO128x75:
+            setVideoMode(TScreen::smCO128x75);
+            break;
+        case cmCO128x60:
+            setVideoMode(TScreen::smCO128x60);
+            break;
+        case cmCO128x37:
+            setVideoMode(TScreen::smCO128x37);
+            break;
+        case cmCO113x75:
+            setVideoMode(TScreen::smCO113x75);
+            break;
+        case cmCO113x37:
+            setVideoMode(TScreen::smCO113x37);
+            break;
+        case cmCO102x30:
+            setVideoMode(TScreen::smCO102x30);
+            break;
+        case cmCO85x37:
+            setVideoMode(TScreen::smCO85x37);
+            break;
+        case cmCO85x26:
+            setVideoMode(TScreen::smCO85x26);
+            break;
+        case cmCO85x25:
+            setVideoMode(TScreen::smCO85x25);
+            break;
+        case cmCO85x22:
+            setVideoMode(TScreen::smCO85x22);
+            break;
+        case cmCO73x20:
+            setVideoMode(TScreen::smCO73x20);
+            break;
+        case cmCO64x18:
+            setVideoMode(TScreen::smCO64x18);
+            break;
+        case cmCO64x16:
+            setVideoMode(TScreen::smCO64x16);
+            break;
+        case cmCO40x22:
+            setVideoMode(TScreen::smCO40x22);
+            break;
         default:
             return;
         }
@@ -860,6 +934,13 @@ void TMyApp::myNewWindow() {
     r.move(rand() % 53, rand() % 16);
     TDemoWindow *window = new TDemoWindow(r, "Demo Window", ++winNumber);
     deskTop->insert(window);
+}
+
+void TMyApp::setVideoMode(unsigned mode) {
+    setScreenMode(mode);
+    unsigned nW=TScreen::getCols();
+    unsigned nH=TScreen::getRows();
+    messageBox(mfInformation | mfOKButton,"Successfully changed to %d x %d size",nW,nH);
 }
 
 TDemoWindow::TDemoWindow(const TRect& bounds, const char *aTitle, short aNumber) :

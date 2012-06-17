@@ -713,7 +713,7 @@ void TMyApp::aboutDlgBox() {
     aboutBox->insert(new TStaticText(TRect(9, 2, 30, 9), "\003Turbo Vision Demo\n\n" // These strings will be
                     "\003C++ Version\n\n"// concatenated by the compiler.
                     "\003Copyright (c) 2012\n\n"// The \003 centers the line.
-                    "\003Research in Motion Limited"));
+                    "\003Borland International"));
 
     aboutBox->insert(new TButton(TRect(14, 10, 26, 12), " OK", cmOK, bfDefault));
 
